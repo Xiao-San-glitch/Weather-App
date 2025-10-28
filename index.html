@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Weather App</title>
+  <style>
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(to bottom right, #89f7fe, #66a6ff);
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 400px;
+      background: white;
+      margin: 100px auto;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      color: #0077ff;
+    }
+
+    input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      border: 2px solid #0077ff;
+      border-radius: 10px;
+      outline: none;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 15px;
+      background: #0077ff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #005fcc;
+    }
+
+    .weather-box {
+      margin-top: 30px;
+      background: #f0f8ff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .note {
+      color: gray;
+      font-size: 13px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌤️ Weather App</h1>
+
+    <input type="text" id="city" placeholder="Enter city name">
+    <button onclick="showWeather()">Show Weather</button>
+
+    <div class="weather-box" id="weatherBox">
+      <h2>Weather Report</h2>
+      <p><strong>City:</strong> -</p>
+      <p><strong>Temperature:</strong> -</p>
+      <p><strong>Condition:</strong> -</p>
+      <p><strong>Humidity:</strong> -</p>
+      <p><strong>Wind Speed:</strong> -</p>
+    </div>
+
+    <p class="note">(Random weather — HTML, CSS & JS only)</p>
+  </div>
+
+  <script>
+    function showWeather() {
+      const city = document.getElementById("city").value.trim();
+      if (city === "") {
+        alert("Please enter a city name!");
+        return;
+      }
+
+      const conditions = ["Sunny ☀️", "Cloudy ☁️", "Rainy 🌧️", "Windy 🌬️", "Stormy ⛈️", "Snowy ❄️"];
+      const randomCondition = conditions[Math.floor(Math.random() * conditions.length)];
+      const temp = Math.floor(Math.random() * 16) + 20; // 20–35°C
+      const humidity = Math.floor(Math.random() * 50) + 30; // 30–80%
+      const wind = Math.floor(Math.random() * 20) + 5; // 5–25 km/h
+
+      document.getElementById("weatherBox").innerHTML = `
+        <h2>Weather Report</h2>
+        <p><strong>City:</strong> ${city}</p>
+        <p><strong>Temperature:</strong> ${temp}°C</p>
+        <p><strong>Condition:</strong> ${randomCondition}</p>
+        <p><strong>Humidity:</strong> ${humidity}%</p>
+        <p><strong>Wind Speed:</strong> ${wind} km/h</p>
+      `;
+    }
+  </script>
+</body>
+</html>
